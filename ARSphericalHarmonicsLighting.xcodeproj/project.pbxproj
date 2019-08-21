@@ -13,6 +13,10 @@
 		EC9567B3230C9C210067EAA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC9567B1230C9C210067EAA5 /* Main.storyboard */; };
 		EC9567B5230C9C220067EAA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9567B4230C9C220067EAA5 /* Assets.xcassets */; };
 		EC9567B8230C9C220067EAA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC9567B6230C9C220067EAA5 /* LaunchScreen.storyboard */; };
+		ECBA592E230DFEC60032143D /* CollectionViewControllerMeshMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA592D230DFEC60032143D /* CollectionViewControllerMeshMenu.swift */; };
+		ECBA5930230DFEEE0032143D /* TableViewControllerDebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA592F230DFEEE0032143D /* TableViewControllerDebugMenu.swift */; };
+		ECBA5932230DFF1D0032143D /* CollectionViewCellMeshMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA5931230DFF1D0032143D /* CollectionViewCellMeshMenu.swift */; };
+		ECBA5934230E06F20032143D /* ViewControllerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA5933230E06F20032143D /* ViewControllerButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		EC9567B4230C9C220067EAA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC9567B7230C9C220067EAA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC9567B9230C9C220067EAA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECBA592D230DFEC60032143D /* CollectionViewControllerMeshMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewControllerMeshMenu.swift; sourceTree = "<group>"; };
+		ECBA592F230DFEEE0032143D /* TableViewControllerDebugMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerDebugMenu.swift; sourceTree = "<group>"; };
+		ECBA5931230DFF1D0032143D /* CollectionViewCellMeshMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellMeshMenu.swift; sourceTree = "<group>"; };
+		ECBA5933230E06F20032143D /* ViewControllerButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,10 @@
 				EC9567AB230C9C210067EAA5 /* AppDelegate.swift */,
 				EC9567AD230C9C210067EAA5 /* art.scnassets */,
 				EC9567AF230C9C210067EAA5 /* ViewController.swift */,
+				ECBA5933230E06F20032143D /* ViewControllerButtons.swift */,
+				ECBA592F230DFEEE0032143D /* TableViewControllerDebugMenu.swift */,
+				ECBA592D230DFEC60032143D /* CollectionViewControllerMeshMenu.swift */,
+				ECBA5931230DFF1D0032143D /* CollectionViewCellMeshMenu.swift */,
 				EC9567B1230C9C210067EAA5 /* Main.storyboard */,
 				EC9567B4230C9C220067EAA5 /* Assets.xcassets */,
 				EC9567B6230C9C220067EAA5 /* LaunchScreen.storyboard */,
@@ -139,8 +151,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECBA5930230DFEEE0032143D /* TableViewControllerDebugMenu.swift in Sources */,
 				EC9567B0230C9C210067EAA5 /* ViewController.swift in Sources */,
+				ECBA5932230DFF1D0032143D /* CollectionViewCellMeshMenu.swift in Sources */,
 				EC9567AC230C9C210067EAA5 /* AppDelegate.swift in Sources */,
+				ECBA5934230E06F20032143D /* ViewControllerButtons.swift in Sources */,
+				ECBA592E230DFEC60032143D /* CollectionViewControllerMeshMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
