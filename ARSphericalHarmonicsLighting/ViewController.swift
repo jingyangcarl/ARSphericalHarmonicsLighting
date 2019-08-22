@@ -176,3 +176,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
 }
+
+
+extension Int {
+    /*
+     Description:
+     This function is used to convert degree value to raidan value
+     Input:
+     @ Double parameter: a degree value
+     Output:
+     @ Double returnValue: a radian value
+    */
+    var degree2Radian: Double {
+        return Double(self) * .pi / 180
+    }
+}

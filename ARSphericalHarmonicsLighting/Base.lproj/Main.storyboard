@@ -295,7 +295,7 @@
                         <outlet property="switchShowWireframe" destination="iMu-1s-ZzN" id="Mnd-kc-KEy"/>
                         <outlet property="switchShowWorldOrigin" destination="yAw-NJ-Sds" id="2h6-mp-Rp8"/>
                         <outlet property="tableViewDebug" destination="KKU-el-eXE" id="oDW-Kl-b2T"/>
-                        <segue destination="tqg-h5-6Tl" kind="unwind" unwindAction="tableViewControllerUnwindToViewControllerWithSender:" id="2P9-ww-Dxt"/>
+                        <segue destination="tqg-h5-6Tl" kind="unwind" identifier="tableViewControllerUnwindToViewController" unwindAction="tableViewControllerUnwindToViewControllerWithSender:" id="2P9-ww-Dxt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEO-oA-TTr" userLabel="First Responder" sceneMemberID="firstResponder"/>

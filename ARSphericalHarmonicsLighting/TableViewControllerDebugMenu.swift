@@ -41,7 +41,10 @@ class TableViewControllerDebugMenu: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Set default color
         tableViewDebug.backgroundColor = UIColor.black
+        tableViewDebug.allowsSelection = false
     }
 
     // MARK: - Table view data source
@@ -114,15 +117,39 @@ class TableViewControllerDebugMenu: UITableViewController {
     */
     
     @IBAction func switchShowBoundingBoxes(_ sender: Any) {
-    }
-    @IBAction func switchShowDetectedPlanes(_ sender: Any) {
-    }
-    @IBAction func switchShowFeaturePoints(_ sender: Any) {
-    }
-    @IBAction func switchShowWorldOrigin(_ sender: Any) {
-    }
-    @IBAction func switchShowWireFrame(_ sender: Any) {
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
     }
     
-
+    @IBAction func switchShowDetectedPlanes(_ sender: Any) {
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+        
+    }
+    @IBAction func switchShowFeaturePoints(_ sender: Any) {
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    @IBAction func switchShowWorldOrigin(_ sender: Any) {
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    @IBAction func switchShowWireFrame(_ sender: Any) {
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    /*
+     Description:
+     This function is used to prepare data before the segue, where the segue is pointing to the main view controller
+     Input:
+     @ UIStoryboardSegue for seque: a segue
+     @ Any? sender: any sender
+     Output:
+     @ nil returnValue: nil
+    */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        isShowBoundingBoxes = switchShowBoundingBoxes.isOn
+        isShowDetectedPlanes = switchShowDetectedPlanes.isOn
+        isShowFeaturePoints = switchShowFeaturePoints.isOn
+        isShowWorldOrigin = switchShowWorldOrigin.isOn
+        isShowWireFrame = switchShowWireframe.isOn
+    }
 }
