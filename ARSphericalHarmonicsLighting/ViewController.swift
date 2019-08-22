@@ -62,6 +62,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Initialize Views
         viewInit()
+        
+        // Initialize gesture recognizer
+        registerGestureRecognizers()
+        
+        // Initialize light
+        viewScene.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
