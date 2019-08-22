@@ -17,6 +17,7 @@
 		ECBA5930230DFEEE0032143D /* TableViewControllerDebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA592F230DFEEE0032143D /* TableViewControllerDebugMenu.swift */; };
 		ECBA5932230DFF1D0032143D /* CollectionViewCellMeshMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA5931230DFF1D0032143D /* CollectionViewCellMeshMenu.swift */; };
 		ECBA5934230E06F20032143D /* ViewControllerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA5933230E06F20032143D /* ViewControllerButtons.swift */; };
+		ECBA5936230E22550032143D /* TableViewCellDebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA5935230E22550032143D /* TableViewCellDebugMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		ECBA592F230DFEEE0032143D /* TableViewControllerDebugMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerDebugMenu.swift; sourceTree = "<group>"; };
 		ECBA5931230DFF1D0032143D /* CollectionViewCellMeshMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellMeshMenu.swift; sourceTree = "<group>"; };
 		ECBA5933230E06F20032143D /* ViewControllerButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerButtons.swift; sourceTree = "<group>"; };
+		ECBA5935230E22550032143D /* TableViewCellDebugMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellDebugMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				EC9567AF230C9C210067EAA5 /* ViewController.swift */,
 				ECBA5933230E06F20032143D /* ViewControllerButtons.swift */,
 				ECBA592F230DFEEE0032143D /* TableViewControllerDebugMenu.swift */,
+				ECBA5935230E22550032143D /* TableViewCellDebugMenu.swift */,
 				ECBA592D230DFEC60032143D /* CollectionViewControllerMeshMenu.swift */,
 				ECBA5931230DFF1D0032143D /* CollectionViewCellMeshMenu.swift */,
 				EC9567B1230C9C210067EAA5 /* Main.storyboard */,
@@ -156,6 +159,7 @@
 				ECBA5932230DFF1D0032143D /* CollectionViewCellMeshMenu.swift in Sources */,
 				EC9567AC230C9C210067EAA5 /* AppDelegate.swift in Sources */,
 				ECBA5934230E06F20032143D /* ViewControllerButtons.swift in Sources */,
+				ECBA5936230E22550032143D /* TableViewCellDebugMenu.swift in Sources */,
 				ECBA592E230DFEC60032143D /* CollectionViewControllerMeshMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

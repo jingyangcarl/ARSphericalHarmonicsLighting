@@ -10,6 +10,8 @@ import UIKit
 
 class TableViewControllerDebugMenu: UITableViewController {
     
+    @IBOutlet var tableViewDebug: UITableView!
+    
     let debugOptions: [String] = [
         "showBoundingBoxes",
         "showDetectedPlanes",
@@ -26,6 +28,7 @@ class TableViewControllerDebugMenu: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableViewDebug.backgroundColor = UIColor.black
     }
 
     // MARK: - Table view data source
@@ -40,15 +43,17 @@ class TableViewControllerDebugMenu: UITableViewController {
         return debugOptions.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        // let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+//        
+//        print(tableView.visibleCells.isEmpty)
+//
+//        // Configure the cell...
+////        cell.backgroundColor = UIColor.clear
+//
+////        return cell
+//        return UITableViewCell()
+//    }
 
     /*
     // Override to support conditional editing of the table view.

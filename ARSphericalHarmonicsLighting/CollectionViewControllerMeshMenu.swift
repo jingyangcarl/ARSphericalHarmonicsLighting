@@ -12,11 +12,13 @@ private let reuseIdentifier = "MeshMenuCell"
 
 class CollectionViewControllerMeshMenu: UICollectionViewController {
     
+    @IBOutlet var collectionViewMesh: UICollectionView!
+    
     // the icon here is generated using screenshot (400 * 400)
     let meshOptions: [UIImage] = [
         #imageLiteral(resourceName: "MeshCapsule.png"), #imageLiteral(resourceName: "MeshCone.png"), #imageLiteral(resourceName: "MeshCube.png"), #imageLiteral(resourceName: "MeshCylinder.png"), #imageLiteral(resourceName: "MeshGeosphere.png"), #imageLiteral(resourceName: "MeshPyramid.png"), #imageLiteral(resourceName: "MeshSphere.png"), #imageLiteral(resourceName: "MeshTorus.png"), #imageLiteral(resourceName: "MeshTube.png"), #imageLiteral(resourceName: "MeshShip.png")
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        collectionViewMesh.backgroundColor = UIColor.black
     }
 
     /*
@@ -57,6 +60,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         // #warning remember to comment "self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)"
     
         // Configure the cell
+        // cell.backgroundColor = UIColor.clear
         cell.imageView.image = meshOptions[indexPath.row]
     
         return cell

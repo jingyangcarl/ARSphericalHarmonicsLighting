@@ -57,8 +57,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         // sceneView.scene = scene
         
+        // Initialize buttons
         buttonInit()
         
+        // Initialize Views
         viewInit()
     }
     
@@ -117,8 +119,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // hide 
         viewDebug.alpha = 0.0
         viewDebug.isHidden = true
+        viewDebug.backgroundColor = UIColor.clear
         
         viewMesh.alpha = 0.0
         viewMesh.isHidden = true
+        viewMesh.backgroundColor = UIColor.clear
     }
 }

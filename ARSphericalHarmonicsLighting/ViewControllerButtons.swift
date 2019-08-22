@@ -80,7 +80,16 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @IBAction func buttonReset(_ sender: Any) {
+        // perform haptic feedback
+        feedbackNotification.notificationOccurred(.success)
         
+        // remove all the nodes
+        viewScene.scene.rootNode.enumerateChildNodes { (node, _) in
+            node.removeFromParentNode()
+        }
+        
+        // reset configuration
+        viewScene.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
     /*
