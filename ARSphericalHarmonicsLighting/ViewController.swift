@@ -11,47 +11,72 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
-    @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet weak var sceneDebug: UIView!
-    @IBOutlet weak var sceneMesh: UIView!
     
+    @IBOutlet weak var viewScene: ARSCNView!
+    @IBOutlet weak var viewDebug: UIView!
+    @IBOutlet weak var viewMesh: UIView!
+    
+    var isDebugMenuShowed: Bool = false
+    var isMeshMenuShowed: Bool = false
     @IBOutlet weak var buttonDebug: UIButton!
     @IBOutlet weak var buttonReset: UIButton!
     @IBOutlet weak var buttonMesh: UIButton!
     @IBOutlet weak var buttonCursor: UIButton!
     
+    // AR word tracking configuratino
+    var configuration: ARWorldTrackingConfiguration = ARWorldTrackingConfiguration()
+    
+    // mobile screen info
+    var screenCenter: CGPoint = CGPoint(x: 0.0, y: 0.0)
+    
+    // feedback options
+    let feedbackImpact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
+    let feedbackSelection: UISelectionFeedbackGenerator = UISelectionFeedbackGenerator()
+    let feedbackNotification: UINotificationFeedbackGenerator = UINotificationFeedbackGenerator()
+    
+    // debug options
+    var isShowBoundingBoxes: Bool = false
+    var isShowDetectedPlanes: Bool = false
+    var isShowFeaturePoints: Bool = false
+    var isShowWorldOrigin: Bool = false
+    var isShowWireframe: Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
-        sceneView.delegate = self
+        viewScene.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        viewScene.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        // let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // Set the scene to the view
-        sceneView.scene = scene
+        // sceneView.scene = scene
+        
+        buttonInit()
+        
+        viewInit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        configuration = ARWorldTrackingConfiguration()
 
         // Run the view's session
-        sceneView.session.run(configuration)
+        viewScene.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Pause the view's session
-        sceneView.session.pause()
+        viewScene.session.pause()
     }
 
     // MARK: - ARSCNViewDelegate
@@ -78,5 +103,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    /*
+     Description:
+     This function is used to initialize view status including alpha value, etc.
+     Input:
+     @ nil parameter: nil
+     Output:
+     @ nil returnValue: nil
+    */
+    func viewInit() {
+        // hide 
+        viewDebug.alpha = 0.0
+        viewDebug.isHidden = true
+        
+        viewMesh.alpha = 0.0
+        viewMesh.isHidden = true
     }
 }

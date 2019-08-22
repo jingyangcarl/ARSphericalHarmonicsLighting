@@ -109,9 +109,9 @@
                         <outlet property="buttonDebug" destination="F4o-mM-EDq" id="F6k-qK-v91"/>
                         <outlet property="buttonMesh" destination="Rvr-FX-gHO" id="LtN-Ly-lfK"/>
                         <outlet property="buttonReset" destination="c0I-vd-FB6" id="Jy2-LE-RE8"/>
-                        <outlet property="sceneDebug" destination="fhx-TA-aIq" id="DeV-e5-nWh"/>
-                        <outlet property="sceneMesh" destination="Mjc-jJ-Z8w" id="jdP-C9-mnx"/>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="viewDebug" destination="fhx-TA-aIq" id="khS-Ad-Ojo"/>
+                        <outlet property="viewMesh" destination="Mjc-jJ-Z8w" id="N9r-2p-VKB"/>
+                        <outlet property="viewScene" destination="BrB-h1-WRS" id="CJl-Zo-CR1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

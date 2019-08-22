@@ -19,7 +19,9 @@ extension ViewController {
      @ nil returnValue: nil
     */
     func buttonInit() {
-        
+        self.buttonDebug.showsTouchWhenHighlighted = true
+        self.buttonReset.showsTouchWhenHighlighted = true
+        self.buttonMesh.showsTouchWhenHighlighted = true
     }
     
     /*
@@ -31,7 +33,42 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @IBAction func buttonDebug(_ sender: Any) {
+        // perform haptic feedback
+        feedbackSelection.selectionChanged()
         
+        // pop up or hide the menu
+        if isDebugMenuShowed == true {
+            // change isButtonDebugPushed status
+            isDebugMenuShowed = !isDebugMenuShowed
+            
+            // set button alpha value
+            buttonDebug.alpha = 1.0
+            
+            // hide debug option menu with animation
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: {self.viewDebug.alpha = 0.0},
+                completion: {(_) in self.viewDebug.isHidden = !self.viewDebug.isHidden}
+            )
+        } else {
+            // change isButtonDebugPushed status
+            isDebugMenuShowed = !isDebugMenuShowed
+            
+            // set button alpha value
+            buttonDebug.alpha = 0.4
+            
+            // show debug option menu with animation
+            viewDebug.isHidden = !viewDebug.isHidden
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: {self.viewDebug.alpha = 0.7},
+                completion: {(_) in}
+            )
+        }
     }
     
     /*
@@ -55,6 +92,41 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @IBAction func buttonMesh(_ sender: Any) {
+        // perform haptic feedback
+        feedbackSelection.selectionChanged()
         
+        // pop up or hide the menu
+        if isMeshMenuShowed == true {
+            // change isButtonDebugPushed status
+            isMeshMenuShowed = !isMeshMenuShowed
+            
+            // set button alpha value
+            buttonMesh.alpha = 1.0
+            
+            // hide debug option menu with animation
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: {self.viewMesh.alpha = 0.0},
+                completion: {(_) in self.viewMesh.isHidden = !self.viewMesh.isHidden}
+            )
+        } else {
+            // change isButtonDebugPushed status
+            isMeshMenuShowed = !isMeshMenuShowed
+            
+            // set button alpha value
+            buttonMesh.alpha = 0.4
+            
+            // show debug option menu with animation
+            viewMesh.isHidden = !viewMesh.isHidden
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: {self.viewMesh.alpha = 0.7},
+                completion: {(_) in}
+            )
+        }
     }
 }
