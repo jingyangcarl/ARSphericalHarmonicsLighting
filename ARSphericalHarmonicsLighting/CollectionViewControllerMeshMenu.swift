@@ -60,7 +60,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         // #warning remember to comment "self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)"
     
         // Configure the cell
-        // cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear
         cell.imageView.image = meshOptions[indexPath.row]
     
         return cell

@@ -12,6 +12,19 @@ class TableViewControllerDebugMenu: UITableViewController {
     
     @IBOutlet var tableViewDebug: UITableView!
     
+    @IBOutlet weak var switchShowBoundingBoxes: UISwitch!
+    @IBOutlet weak var switchShowDetectedPlanes: UISwitch!
+    @IBOutlet weak var switchShowFeaturePoints: UISwitch!
+    @IBOutlet weak var switchShowWorldOrigin: UISwitch!
+    @IBOutlet weak var switchShowWireframe: UISwitch!
+    
+    // Debug options
+    var isShowBoundingBoxes: Bool?
+    var isShowDetectedPlanes: Bool?
+    var isShowFeaturePoints: Bool?
+    var isShowWorldOrigin: Bool?
+    var isShowWireFrame: Bool?
+    
     let debugOptions: [String] = [
         "showBoundingBoxes",
         "showDetectedPlanes",
@@ -44,15 +57,15 @@ class TableViewControllerDebugMenu: UITableViewController {
     }
 
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        // let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-//        
-//        print(tableView.visibleCells.isEmpty)
+//         let cell = tableView.dequeueReusableCell(withIdentifier: "DebugMenuCell", for: indexPath)
+//
+//        print(tableView.cellForRow(at: indexPath))
 //
 //        // Configure the cell...
 ////        cell.backgroundColor = UIColor.clear
 //
-////        return cell
-//        return UITableViewCell()
+//        return cell
+////        return UITableViewCell()
 //    }
 
     /*
@@ -99,5 +112,17 @@ class TableViewControllerDebugMenu: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func switchShowBoundingBoxes(_ sender: Any) {
+    }
+    @IBAction func switchShowDetectedPlanes(_ sender: Any) {
+    }
+    @IBAction func switchShowFeaturePoints(_ sender: Any) {
+    }
+    @IBAction func switchShowWorldOrigin(_ sender: Any) {
+    }
+    @IBAction func switchShowWireFrame(_ sender: Any) {
+    }
+    
 
 }
