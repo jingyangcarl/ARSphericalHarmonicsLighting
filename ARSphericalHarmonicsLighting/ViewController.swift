@@ -75,6 +75,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         configuration = ARWorldTrackingConfiguration()
+        
+        // Enable plane detection
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         viewScene.session.run(configuration)
