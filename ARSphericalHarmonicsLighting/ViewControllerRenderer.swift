@@ -2,12 +2,23 @@
 //  ViewControllerRenderer.swift
 //  ARSphericalHarmonicsLighting
 //
+//  This file is an extension of ViewController,
+//  which is used to deal with everything related to rendering, including cursor rendering, plane rendering, and etc.
+//  The file is organized as follows:
+//  >
+//  >> func createPlaneNode(planeAnchor: ARPlaneAnchor) -> SCNNode
+//  >> func createCursorNode(hitTest: ARHitTestResult) -> SCNNode
+//  >> func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor)
+//  >> func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor)
+//  >> func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor)
+//  >> func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval)
+//  >
+//
 //  Created by Jing Yang on 8/22/19.
 //  Copyright © 2019 Jing Yang. All rights reserved.
 //
 
 import ARKit
-import UIKit
 
 extension ViewController {
     
@@ -138,6 +149,25 @@ extension ViewController {
     
     /*
      Description:
+     This function is an interface from ARSCNViewDelegate, which is called when a plane anchor is removed from the scene
+     Input:
+     @ SCNSceneRenderer _ render: the ARSCNView object rendering the scene
+     @ SCNNode didRemove nodd: the removed SceneKit node, which is a child node of sceneView rootnode
+     @ ARAnchor for anchor: the AR anchor corresponding to the node
+     Output:
+     @ nil returnValue: nil
+     */
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        guard let _ = anchor as? ARPlaneAnchor else { return }
+        
+        // remove node from parent
+        node.enumerateChildNodes{ (childNode, _) in
+            childNode.removeFromParentNode()
+        }
+    }
+    
+    /*
+     Description:
      This function is an interface from ARSCNViewDelegate, which is called exactly once per frame. In this case, the function is triggered to render to cursor.
      Input:
      @ SCNSceneRenderer _ renderer: the ARSCNView object rendering the scene
@@ -189,25 +219,6 @@ extension ViewController {
                     node.isHidden = true
                 }
             }
-        }
-    }
-    
-    /*
-     Description:
-     This function is an interface from ARSCNViewDelegate, which is called when a plane anchor is removed from the scene
-     Input:
-     @ SCNSceneRenderer _ render: the ARSCNView object rendering the scene
-     @ SCNNode didRemove nodd: the removed SceneKit node, which is a child node of sceneView rootnode
-     @ ARAnchor for anchor: the AR anchor corresponding to the node
-     Output:
-     @ nil returnValue: nil
-     */
-    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-        guard let _ = anchor as? ARPlaneAnchor else { return }
-        
-        // remove node from parent
-        node.enumerateChildNodes{ (childNode, _) in
-            childNode.removeFromParentNode()
         }
     }
     
