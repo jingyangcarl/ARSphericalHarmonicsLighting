@@ -2,7 +2,8 @@
 //  ViewControllerGestureRecognizer.swift
 //  ARSphericalHarmonicsLighting
 //
-//  This file is an extension of ViewController, which is used to deal with everything related to gesture recognizer,
+//  This file is an extension of ViewController,
+//  which is used to deal with everything related to gesture recognizer,
 //  including gesture recognizer registration, gesture action and so on.
 //  The file is organized as follows:
 //  >

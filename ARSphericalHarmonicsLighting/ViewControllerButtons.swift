@@ -2,6 +2,16 @@
 //  ViewControllerButtons.swift
 //  ARSphericalHarmonicsLighting
 //
+//  This file is an extension of ViewController,
+//  which is used to deal with everything related to button events
+//  The file is organized as follows:
+//  >
+//  >> func buttonInit()
+//  >> @IBAction func buttonMesh(_ sender: Any)
+//  >> @IBAction func buttonDebug(_ sender: Any)
+//  >> @IBAction func buttonReset(_ sender: Any)
+//  >
+//
 //  Created by Jing Yang on 8/21/19.
 //  Copyright © 2019 Jing Yang. All rights reserved.
 //
@@ -22,6 +32,53 @@ extension ViewController {
         self.buttonDebug.showsTouchWhenHighlighted = true
         self.buttonReset.showsTouchWhenHighlighted = true
         self.buttonMesh.showsTouchWhenHighlighted = true
+    }
+    
+    /*
+     Description:
+     This function is a callback function of button Mesh, which will pop up or hide the mesh option menu
+     Input:
+     @ Any _ sender: any sender
+     Output:
+     @ nil returnValue: nil
+     */
+    @IBAction func buttonMesh(_ sender: Any) {
+        // perform haptic feedback
+        feedbackSelection.selectionChanged()
+        
+        // pop up or hide the menu
+        if isMeshMenuShowed == true {
+            // change isButtonDebugPushed status
+            isMeshMenuShowed = !isMeshMenuShowed
+            
+            // set button alpha value
+            buttonMesh.alpha = 1.0
+            
+            // hide debug option menu with animation
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: {self.viewMesh.alpha = 0.0},
+                completion: {(_) in self.viewMesh.isHidden = !self.viewMesh.isHidden}
+            )
+        } else {
+            // change isButtonDebugPushed status
+            isMeshMenuShowed = !isMeshMenuShowed
+            
+            // set button alpha value
+            buttonMesh.alpha = 0.4
+            
+            // show debug option menu with animation
+            viewMesh.isHidden = !viewMesh.isHidden
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: {self.viewMesh.alpha = 0.7},
+                completion: {(_) in}
+            )
+        }
     }
     
     /*
@@ -90,52 +147,5 @@ extension ViewController {
         
         // reset configuration
         viewScene.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-    }
-    
-    /*
-     Description:
-     This function is a callback function of button Mesh, which will pop up or hide the mesh option menu
-     Input:
-     @ Any _ sender: any sender
-     Output:
-     @ nil returnValue: nil
-    */
-    @IBAction func buttonMesh(_ sender: Any) {
-        // perform haptic feedback
-        feedbackSelection.selectionChanged()
-        
-        // pop up or hide the menu
-        if isMeshMenuShowed == true {
-            // change isButtonDebugPushed status
-            isMeshMenuShowed = !isMeshMenuShowed
-            
-            // set button alpha value
-            buttonMesh.alpha = 1.0
-            
-            // hide debug option menu with animation
-            UIView.animate(
-                withDuration: 0.3,
-                delay: 0,
-                options: .curveEaseOut,
-                animations: {self.viewMesh.alpha = 0.0},
-                completion: {(_) in self.viewMesh.isHidden = !self.viewMesh.isHidden}
-            )
-        } else {
-            // change isButtonDebugPushed status
-            isMeshMenuShowed = !isMeshMenuShowed
-            
-            // set button alpha value
-            buttonMesh.alpha = 0.4
-            
-            // show debug option menu with animation
-            viewMesh.isHidden = !viewMesh.isHidden
-            UIView.animate(
-                withDuration: 0.3,
-                delay: 0,
-                options: .curveEaseIn,
-                animations: {self.viewMesh.alpha = 0.7},
-                completion: {(_) in}
-            )
-        }
     }
 }
