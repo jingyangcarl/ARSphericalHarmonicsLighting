@@ -13,6 +13,7 @@ private let reuseIdentifier = "MeshMenuCell"
 class CollectionViewControllerMeshMenu: UICollectionViewController {
     
     @IBOutlet var collectionViewMesh: UICollectionView!
+
     
     // the icon here is generated using screenshot (400 * 400)
     let meshOptions: [UIImage] = [
@@ -57,13 +58,17 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCellMeshMenu
-        // #warning remember to comment "self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)"
-    
+        
         // Configure the cell
         cell.backgroundColor = UIColor.clear
         cell.imageView.image = meshOptions[indexPath.row]
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath)
+        print(cell)
     }
 
     // MARK: UICollectionViewDelegate
@@ -74,6 +79,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         return true
     }
     */
+    
 
     /*
     // Uncomment this method to specify if the specified item should be selected
@@ -96,5 +102,22 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
     
     }
     */
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // deselect the previous selected cell
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 1.0
+        cell?.layer.borderColor = UIColor.white.cgColor
+        
+        // save location for deselection
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print(indexPath)
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+    }
+    
 }
