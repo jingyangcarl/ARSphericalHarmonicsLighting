@@ -42,7 +42,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var isShowWireframe: Bool = false
     
     // mesh selection
-    var selectedMesh: String = "MeshCapsule"
+    var selectedMesh: String = "capsule"
     
     
     override func viewDidLoad() {

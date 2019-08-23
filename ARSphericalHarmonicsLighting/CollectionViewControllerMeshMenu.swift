@@ -25,16 +25,16 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
     
     // the icon here is generated using screenshot (400 * 400)
     let meshOptions: [meshCell] = [
-        meshCell(name: "MeshCapsule", image: #imageLiteral(resourceName: "MeshCapsule.png")),
-        meshCell(name: "MeshCone", image: #imageLiteral(resourceName: "MeshCone.png")),
-        meshCell(name: "MeshCube", image: #imageLiteral(resourceName: "MeshCube.png")),
-        meshCell(name: "MeshCylinder", image: #imageLiteral(resourceName: "MeshCylinder.png")),
-        meshCell(name: "MeshGeosphere", image: #imageLiteral(resourceName: "MeshGeosphere.png")),
-        meshCell(name: "MeshPyramid", image: #imageLiteral(resourceName: "MeshPyramid.png")),
-        meshCell(name: "MeshSphere", image: #imageLiteral(resourceName: "MeshSphere.png")),
-        meshCell(name: "MeshTorus", image: #imageLiteral(resourceName: "MeshTorus.png")),
-        meshCell(name: "MeshTube", image: #imageLiteral(resourceName: "MeshTube.png")),
-        meshCell(name: "MeshShip", image: #imageLiteral(resourceName: "MeshShip.png")),
+        meshCell(name: "capsule", image: #imageLiteral(resourceName: "MeshCapsule.png")),
+        meshCell(name: "cone", image: #imageLiteral(resourceName: "MeshCone.png")),
+        meshCell(name: "cube", image: #imageLiteral(resourceName: "MeshCube.png")),
+        meshCell(name: "cylinder", image: #imageLiteral(resourceName: "MeshCylinder.png")),
+        meshCell(name: "geosphere", image: #imageLiteral(resourceName: "MeshGeosphere.png")),
+        meshCell(name: "pyramid", image: #imageLiteral(resourceName: "MeshPyramid.png")),
+        meshCell(name: "sphere", image: #imageLiteral(resourceName: "MeshSphere.png")),
+        meshCell(name: "torus", image: #imageLiteral(resourceName: "MeshTorus.png")),
+        meshCell(name: "tube", image: #imageLiteral(resourceName: "MeshTube.png")),
+        meshCell(name: "ship", image: #imageLiteral(resourceName: "MeshShip.png")),
     ]
     
     // current mesh
