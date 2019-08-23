@@ -346,9 +346,11 @@
                     </collectionView>
                     <connections>
                         <outlet property="collectionViewMesh" destination="kyS-rk-YWU" id="k0G-gM-cN0"/>
+                        <segue destination="SK5-eu-1Vw" kind="unwind" identifier="collectionViewControllerUnwindToViewController" unwindAction="collectionViewControllerUnwindToViewControllerWithSender:" id="Yos-d5-Jbn"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1S8-5R-NVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SK5-eu-1Vw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="685.50724637681162" y="265.84821428571428"/>
         </scene>

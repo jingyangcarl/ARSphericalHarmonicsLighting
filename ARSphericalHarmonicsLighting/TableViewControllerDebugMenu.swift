@@ -58,18 +58,45 @@ class TableViewControllerDebugMenu: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return debugOptions.count
     }
+    
+    @IBAction func switchShowBoundingBoxes(_ sender: Any) {
+        isShowBoundingBoxes = switchShowBoundingBoxes.isOn
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    @IBAction func switchShowDetectedPlanes(_ sender: Any) {
+        isShowDetectedPlanes = switchShowDetectedPlanes.isOn
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+        
+    }
+    @IBAction func switchShowFeaturePoints(_ sender: Any) {
+        isShowFeaturePoints = switchShowFeaturePoints.isOn
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    @IBAction func switchShowWorldOrigin(_ sender: Any) {
+        isShowWorldOrigin = switchShowWorldOrigin.isOn
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    @IBAction func switchShowWireFrame(_ sender: Any) {
+        isShowWireFrame = switchShowWireframe.isOn
+        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
+    }
+    
+    /*
+     Description:
+     This function is used to prepare data before the segue, where the segue is pointing to the main view controller
+     Input:
+     @ UIStoryboardSegue for seque: a segue
+     @ Any? sender: any sender
+     Output:
+     @ nil returnValue: nil
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//         let cell = tableView.dequeueReusableCell(withIdentifier: "DebugMenuCell", for: indexPath)
-//
-//        print(tableView.cellForRow(at: indexPath))
-//
-//        // Configure the cell...
-////        cell.backgroundColor = UIColor.clear
-//
-//        return cell
-////        return UITableViewCell()
-//    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -115,41 +142,4 @@ class TableViewControllerDebugMenu: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func switchShowBoundingBoxes(_ sender: Any) {
-        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
-    }
-    
-    @IBAction func switchShowDetectedPlanes(_ sender: Any) {
-        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
-        
-    }
-    @IBAction func switchShowFeaturePoints(_ sender: Any) {
-        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
-    }
-    
-    @IBAction func switchShowWorldOrigin(_ sender: Any) {
-        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
-    }
-    
-    @IBAction func switchShowWireFrame(_ sender: Any) {
-        performSegue(withIdentifier: "tableViewControllerUnwindToViewController", sender: self)
-    }
-    
-    /*
-     Description:
-     This function is used to prepare data before the segue, where the segue is pointing to the main view controller
-     Input:
-     @ UIStoryboardSegue for seque: a segue
-     @ Any? sender: any sender
-     Output:
-     @ nil returnValue: nil
-    */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        isShowBoundingBoxes = switchShowBoundingBoxes.isOn
-        isShowDetectedPlanes = switchShowDetectedPlanes.isOn
-        isShowFeaturePoints = switchShowFeaturePoints.isOn
-        isShowWorldOrigin = switchShowWorldOrigin.isOn
-        isShowWireFrame = switchShowWireframe.isOn
-    }
 }

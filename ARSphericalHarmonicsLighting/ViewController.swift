@@ -141,7 +141,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
      @ nil returnValue: nil
     */
     @IBAction func tableViewControllerUnwindToViewController(sender: UIStoryboardSegue) {
-        guard let tableViewController = sender.source as? TableViewControllerDebugMenu else {return}
+        guard let tableViewController = sender.source as? TableViewControllerDebugMenu else { return }
         
         // set showboundingBoxes status
         self.isShowBoundingBoxes = tableViewController.isShowBoundingBoxes!
@@ -180,6 +180,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @IBAction func collectionViewControllerUnwindToViewController(sender: UIStoryboardSegue) {
+        guard let collectionViewController = sender.source as? CollectionViewControllerMeshMenu else { return }
+        
+        print(collectionViewController.selectedMesh!)
+    }
     
 }
 
