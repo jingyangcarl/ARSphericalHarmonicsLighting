@@ -57,7 +57,15 @@ extension ViewController {
     }
     
     @objc func pinchGestureAction(sender: UIPinchGestureRecognizer) {
-        print("pinch")
+        guard let viewScene = sender.view as? ARSCNView else { return }
+        let pinchLocation = sender.location(in: viewScene)
+        
+        let objectHitTest = viewScene.hitTest(pinchLocation)
+        if !objectHitTest.isEmpty {
+            let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
+            objectHitTest.first?.node.runAction(pinchAction)
+            sender.scale = 1.0
+        }
     }
     
     @objc func rotationGestureAction(sender: UIRotationGestureRecognizer) {
