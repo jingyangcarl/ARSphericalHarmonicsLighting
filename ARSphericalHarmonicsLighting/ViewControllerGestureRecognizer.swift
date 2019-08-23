@@ -2,6 +2,18 @@
 //  ViewControllerGestureRecognizer.swift
 //  ARSphericalHarmonicsLighting
 //
+//  This file is an extension of ViewController, which is used to deal with everything related to gesture recognizer,
+//  including gesture recognizer registration, gesture action and so on.
+//  The file is organized as follows:
+//  >
+//  >> func registerGestureRecognizers()
+//  >> @objc func longPressGestureAction(sender: UILongPressGestureRecognizer)
+//  >> @objc func panPressGestureAction(sender: UIPanGestureRecognizer)
+//  >> @objc func pinchGestureAction(sender: UIPinchGestureRecognizer)
+//  >> @objc func rotationGestureAction(sender: UIRotationGestureRecognizer)
+//  >> @objc func tapGestureAction(sender: UITapGestureRecognizer)
+//  >
+//
 //  Created by Jing Yang on 8/22/19.
 //  Copyright © 2019 Jing Yang. All rights reserved.
 //
@@ -48,14 +60,38 @@ extension ViewController {
         
     }
     
+    /*
+     Description:
+     This function is used to deal with long press gesture, which is used to remove any object from the current scnee
+     Input:
+     @ UILongPressGestureRecognizer: a long press gesture recognizer
+     Output:
+     @ nil returnValue: nil
+    */
     @objc func longPressGestureAction(sender: UILongPressGestureRecognizer) {
         print("long press")
     }
     
+    /*
+     Description:
+     This function is used to deal with pan press gesture
+     Input:
+     @ UIPanGestureRecognizer: a pan press gesture recognizer
+     Output:
+     @ nil returnValue: nil
+    */
     @objc func panPressGestureAction(sender: UIPanGestureRecognizer) {
         print("pan press")
     }
     
+    /*
+     Description:
+     This function is used to deal with pinch gesture, which is used to scale any object in the screen
+     Input:
+     @ UIPinchGestureRecognizer: a pinch gesture recognizer
+     Output:
+     @ nil returnValue: nil
+    */
     @objc func pinchGestureAction(sender: UIPinchGestureRecognizer) {
         guard let viewScene = sender.view as? ARSCNView else { return }
         let pinchLocation = sender.location(in: viewScene)
@@ -68,10 +104,26 @@ extension ViewController {
         }
     }
     
+    /*
+     Description:
+     This function is used to deal with rotation gesture, which is used to rotate any object in the scene
+     Input:
+     @ UIRotationGestureRecognizer: a rotation gesture recognizer
+     Output:
+     @ nil returnValue: nil
+    */
     @objc func rotationGestureAction(sender: UIRotationGestureRecognizer) {
         print("rotation")
     }
     
+    /*
+     Description:
+     This function is used to deal with tap gesture, which is used to place a selected object on any detected plane in the scene
+     Input:
+     @ UITapGesturerecognizer: a tap gesture recognizer
+     Output:
+     @ nil returnValue: nil
+    */
     @objc func tapGestureAction(sender: UITapGestureRecognizer) {
         guard let viewScene = sender.view as? ARSCNView else { return }
         let touchLocation = sender.location(in: viewScene)
