@@ -144,7 +144,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let tableViewController = sender.source as? TableViewControllerDebugMenu else { return }
         
         // set showboundingBoxes status
-        self.isShowBoundingBoxes = tableViewController.isShowBoundingBoxes!
+        self.isShowBoundingBoxes = tableViewController.isShowBoundingBoxes
         if tableViewController.isShowBoundingBoxes == true {
             viewScene.debugOptions.insert(SCNDebugOptions.showBoundingBoxes)
         } else {
@@ -153,10 +153,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         
         // set showDetectedPlanes status
-        self.isShowDetectedPlanes = tableViewController.isShowDetectedPlanes!
+        self.isShowDetectedPlanes = tableViewController.isShowDetectedPlanes
         
         // set showFeaturePoints status
-        self.isShowFeaturePoints = tableViewController.isShowFeaturePoints!
+        self.isShowFeaturePoints = tableViewController.isShowFeaturePoints
         if tableViewController.isShowFeaturePoints == true {
             viewScene.debugOptions.insert(SCNDebugOptions.showFeaturePoints)
         } else {
@@ -164,7 +164,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         
         // set showWorldOrigin status
-        self.isShowWorldOrigin = tableViewController.isShowWorldOrigin!
+        self.isShowWorldOrigin = tableViewController.isShowWorldOrigin
         if tableViewController.isShowWorldOrigin == true {
             viewScene.debugOptions.insert(SCNDebugOptions.showWorldOrigin)
         } else {
@@ -172,7 +172,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         
         // set showWireframe status
-        self.isShowWireframe = tableViewController.isShowWireFrame!
+        self.isShowWireframe = tableViewController.isShowWireFrame
         if tableViewController.isShowWireFrame == true {
             viewScene.debugOptions.insert(SCNDebugOptions.showWireframe)
         } else {

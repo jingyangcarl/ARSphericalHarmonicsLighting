@@ -19,11 +19,11 @@ class TableViewControllerDebugMenu: UITableViewController {
     @IBOutlet weak var switchShowWireframe: UISwitch!
     
     // Debug options
-    var isShowBoundingBoxes: Bool?
-    var isShowDetectedPlanes: Bool?
-    var isShowFeaturePoints: Bool?
-    var isShowWorldOrigin: Bool?
-    var isShowWireFrame: Bool?
+    var isShowBoundingBoxes: Bool = false
+    var isShowDetectedPlanes: Bool = false
+    var isShowFeaturePoints: Bool = false
+    var isShowWorldOrigin: Bool = false
+    var isShowWireFrame: Bool = false
     
     let debugOptions: [String] = [
         "showBoundingBoxes",

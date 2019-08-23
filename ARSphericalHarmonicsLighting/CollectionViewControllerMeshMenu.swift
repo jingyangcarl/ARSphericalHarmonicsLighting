@@ -134,6 +134,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         // update selected item
         selectedMesh = cell.name
         
+        // perform segue
         performSegue(withIdentifier: "collectionViewControllerUnwindToViewController", sender: self)
     }
     

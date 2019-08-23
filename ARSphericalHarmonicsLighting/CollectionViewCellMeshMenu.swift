@@ -10,7 +10,8 @@ import UIKit
 
 class CollectionViewCellMeshMenu: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
     var name: String!
+    
+    @IBOutlet weak var imageView: UIImageView!
     
 }
