@@ -70,8 +70,8 @@ extension ViewController {
         
         let planeHitTest = viewScene.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
         if !planeHitTest.isEmpty {
-            let scene = SCNScene(named: "art.scnassets/ship.scn")
-            let node = (scene?.rootNode.childNode(withName: "ship", recursively: false))!
+            let scene = SCNScene(named: "art.scnassets/\(selectedMesh).scn")
+            let node = (scene?.rootNode.childNode(withName: selectedMesh, recursively: false))!
             let position = planeHitTest.first?.worldTransform.columns.3
             node.position = SCNVector3(position!.x, position!.y, position!.z)
             self.viewScene.scene.rootNode.addChildNode(node)

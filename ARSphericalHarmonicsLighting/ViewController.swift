@@ -41,6 +41,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var isShowWorldOrigin: Bool = false
     var isShowWireframe: Bool = false
     
+    // mesh selection
+    var selectedMesh: String = "MeshCapsule"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,10 +186,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    /*
+     Description:
+     This function is a unwind segue from Collection View Controller, which is used to pass mesh selection back to the current view controller.
+     Input:
+     @ UIStoryboardSegue sender: a segue sender
+     Output:
+     @ nil returnValue: nil
+     */
     @IBAction func collectionViewControllerUnwindToViewController(sender: UIStoryboardSegue) {
+        
+        // perform haptic feedback
+        feedbackSelection.selectionChanged()
+        
+        // set selected mesh
         guard let collectionViewController = sender.source as? CollectionViewControllerMeshMenu else { return }
         
-        print(collectionViewController.selectedMesh!)
+        self.selectedMesh = collectionViewController.selectedMesh
     }
     
 }
