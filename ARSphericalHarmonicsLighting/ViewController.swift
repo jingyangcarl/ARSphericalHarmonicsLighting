@@ -44,6 +44,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // mesh selection
     var selectedMesh: String = "capsule"
     
+    // current selected ARSCNObject
+    var selectedObject: ARSCNObject?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
