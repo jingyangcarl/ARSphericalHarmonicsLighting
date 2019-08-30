@@ -12,7 +12,7 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
-    @IBOutlet weak var viewScene: ARSCNView!
+    @IBOutlet weak var viewScene: VirtualARSCNView!
     @IBOutlet weak var viewDebug: UIView!
     @IBOutlet weak var viewMesh: UIView!
     

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4o-mM-EDq">
-                                <rect key="frame" x="20" y="30" width="30" height="30"/>
+                                <rect key="frame" x="20" y="45" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="GOJ-EL-RG4"/>
                                     <constraint firstAttribute="height" constant="30" id="tmJ-Ad-9k0"/>
@@ -33,7 +33,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0I-vd-FB6">
-                                <rect key="frame" x="364" y="30" width="30" height="30"/>
+                                <rect key="frame" x="364" y="45" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3t3-aY-Y8Q"/>
                                     <constraint firstAttribute="width" constant="30" id="zgz-kT-OFC"/>
@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhx-TA-aIq">
-                                <rect key="frame" x="20" y="70" width="250" height="200"/>
+                                <rect key="frame" x="20" y="85" width="250" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="alE-fW-IRV"/>
                                     <constraint firstAttribute="height" constant="200" id="fmg-NX-o8E"/>
@@ -91,11 +91,11 @@
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Mjc-jJ-Z8w" secondAttribute="trailing" constant="20" id="8Fi-v3-r4U"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
                             <constraint firstItem="fhx-TA-aIq" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="20" id="KLa-v2-Ii8"/>
-                            <constraint firstItem="c0I-vd-FB6" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" constant="30" id="Vj6-C6-6pM"/>
+                            <constraint firstItem="c0I-vd-FB6" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" constant="45" id="Vj6-C6-6pM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="Rvr-FX-gHO" secondAttribute="bottom" constant="20" id="b5H-lM-D1d"/>
-                            <constraint firstItem="F4o-mM-EDq" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" constant="30" id="dV2-ae-m8X"/>
+                            <constraint firstItem="F4o-mM-EDq" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" constant="45" id="dV2-ae-m8X"/>
                             <constraint firstAttribute="trailing" secondItem="Rvr-FX-gHO" secondAttribute="trailing" constant="20" id="e29-3D-ImO"/>
                             <constraint firstItem="Gvj-vq-nFx" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="gtE-et-eux"/>
                             <constraint firstItem="Rvr-FX-gHO" firstAttribute="top" secondItem="Mjc-jJ-Z8w" secondAttribute="bottom" constant="10" id="jLG-Tb-PWl"/>

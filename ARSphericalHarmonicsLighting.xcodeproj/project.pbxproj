@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC9539BA2319CF44005A062C /* ARSCNObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9539B92319CF44005A062C /* ARSCNObject.swift */; };
+		EC9539BC2319CF62005A062C /* VirtualARSCNView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9539BB2319CF62005A062C /* VirtualARSCNView.swift */; };
 		EC9567AC230C9C210067EAA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9567AB230C9C210067EAA5 /* AppDelegate.swift */; };
 		EC9567AE230C9C210067EAA5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9567AD230C9C210067EAA5 /* art.scnassets */; };
 		EC9567B0230C9C210067EAA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9567AF230C9C210067EAA5 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC9539B92319CF44005A062C /* ARSCNObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSCNObject.swift; sourceTree = "<group>"; };
+		EC9539BB2319CF62005A062C /* VirtualARSCNView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualARSCNView.swift; sourceTree = "<group>"; };
 		EC9567A8230C9C210067EAA5 /* ARSphericalHarmonicsLighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARSphericalHarmonicsLighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC9567AB230C9C210067EAA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC9567AD230C9C210067EAA5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				EC9567B4230C9C220067EAA5 /* Assets.xcassets */,
 				EC9567B6230C9C220067EAA5 /* LaunchScreen.storyboard */,
 				EC9567B9230C9C220067EAA5 /* Info.plist */,
+				EC9539B92319CF44005A062C /* ARSCNObject.swift */,
+				EC9539BB2319CF62005A062C /* VirtualARSCNView.swift */,
 			);
 			path = ARSphericalHarmonicsLighting;
 			sourceTree = "<group>";
@@ -166,6 +172,8 @@
 				ECBA593C23109F650032143D /* ViewControllerSegue.swift in Sources */,
 				ECBA5932230DFF1D0032143D /* CollectionViewCellMeshMenu.swift in Sources */,
 				EC9567AC230C9C210067EAA5 /* AppDelegate.swift in Sources */,
+				EC9539BA2319CF44005A062C /* ARSCNObject.swift in Sources */,
+				EC9539BC2319CF62005A062C /* VirtualARSCNView.swift in Sources */,
 				ECBA5934230E06F20032143D /* ViewControllerButtons.swift in Sources */,
 				ECBA593A230F38E40032143D /* ViewControllerGestureRecognizer.swift in Sources */,
 				ECBA592E230DFEC60032143D /* CollectionViewControllerMeshMenu.swift in Sources */,
