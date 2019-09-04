@@ -10,7 +10,10 @@ import UIKit
 import ARKit
 
 class ARSCNObject: SCNReferenceNode {
-
+    
+    // object's realworld anchor
+    var anchor: ARAnchor?
+    
     /*
      Description:
      This function is used to get the existing ARSCNObject which is the parent of provided node.
@@ -19,7 +22,7 @@ class ARSCNObject: SCNReferenceNode {
      Output:
      @ ARSCNObject? returnValue: a ARSCNObject
     */
-    static func getExistingARSCNObjectContaingNode(node: SCNNode) -> ARSCNObject? {
+    static func getExistingARSCNObjectContaningNode(node: SCNNode) -> ARSCNObject? {
         if let ARSCNObjectRoot = node as? ARSCNObject {
             return ARSCNObjectRoot
         }
@@ -27,6 +30,8 @@ class ARSCNObject: SCNReferenceNode {
         guard let parentNode = node.parent else { return nil }
         
         // Recurse up to check if the parent is an `ARSCNObject`.
-        return getExistingARSCNObjectContaingNode(node: parentNode)
+        return getExistingARSCNObjectContaningNode(node: parentNode)
     }
+    
+    
 }

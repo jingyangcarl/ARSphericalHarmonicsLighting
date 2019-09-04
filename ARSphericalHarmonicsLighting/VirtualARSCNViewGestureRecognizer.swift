@@ -54,5 +54,12 @@ class VirtualARSCNViewGestureRecognizer: NSObject, UIGestureRecognizerDelegate {
     
     @objc func didTap(sender: UITapGestureRecognizer) {
         print("didTap")
+        let touchLocation = sender.location(in: viewScene)
+        
+        if let touchedObject = viewScene.getARSCNObject(at: touchLocation) {
+            selectedObject = touchedObject
+        } else {
+            
+        }
     }
 }

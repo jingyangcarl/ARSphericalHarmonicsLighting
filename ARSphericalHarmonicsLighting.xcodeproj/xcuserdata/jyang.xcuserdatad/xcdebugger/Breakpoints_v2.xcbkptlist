@@ -6,59 +6,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ARSphericalHarmonicsLighting/VirtualARSCNView.swift"
-            timestampString = "589322683.112322"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "getARSCNObject(at:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ARSphericalHarmonicsLighting.VirtualARSCNView.getARSCNObject(at: __C.CGPoint) -&gt; Swift.Optional&lt;ARSphericalHarmonicsLighting.ARSCNObject&gt;"
-                  moduleName = "ARSphericalHarmonicsLighting"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jyang/Documents/Xcode/ARSphericalHarmonicsLighting/ARSphericalHarmonicsLighting/VirtualARSCNView.swift"
-                  timestampString = "589322683.273554"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "432">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.SCNHitTestResult) -&gt; Swift.Optional&lt;ARSphericalHarmonicsLighting.ARSCNObject&gt; in ARSphericalHarmonicsLighting.VirtualARSCNView.getARSCNObject(at: __C.CGPoint) -&gt; Swift.Optional&lt;ARSphericalHarmonicsLighting.ARSCNObject&gt;"
-                  moduleName = "ARSphericalHarmonicsLighting"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jyang/Documents/Xcode/ARSphericalHarmonicsLighting/ARSphericalHarmonicsLighting/VirtualARSCNView.swift"
-                  timestampString = "589322683.274931"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARSphericalHarmonicsLighting/VirtualARSCNViewGestureRecognizer.swift"
-            timestampString = "589322683.112388"
+            timestampString = "589330472.790161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
