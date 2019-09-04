@@ -126,22 +126,18 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @objc func tapGestureAction(sender: UITapGestureRecognizer) {
-        guard let viewScene = sender.view as? VirtualARSCNView else { return }
+        print("tap")
+    guard let viewScene = sender.view as? ARSCNView else { return }
         let touchLocation = sender.location(in: viewScene)
         
-//        let planeHitTest = viewScene.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
-//        if !planeHitTest.isEmpty {
-//            let scene = SCNScene(named: "art.scnassets/\(selectedMesh).scn")
-//            let node = (scene?.rootNode.childNode(withName: selectedMesh, recursively: false))!
-//            let position = planeHitTest.first?.worldTransform.columns.3
-//            node.position = SCNVector3(position!.x, position!.y, position!.z)
-//            self.viewScene.scene.rootNode.addChildNode(node)
-//        }
-        
-        if let tappedObject = viewScene.getARSCNObject(at: touchLocation) {
-            selectedObject = tappedObject
-        } else {
-            
+        let planeHitTest = viewScene.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
+        if !planeHitTest.isEmpty {
+            print(selectedMesh)
+            let scene = SCNScene(named: "art.scnassets/\(selectedMesh).scn")
+            let node = (scene?.rootNode.childNode(withName: selectedMesh, recursively: false))!
+            let position = planeHitTest.first?.worldTransform.columns.3
+            node.position = SCNVector3(position!.x, position!.y, position!.z)
+            self.viewScene.scene.rootNode.addChildNode(node)
         }
     }
     

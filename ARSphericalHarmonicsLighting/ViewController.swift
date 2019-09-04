@@ -44,9 +44,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // mesh selection
     var selectedMesh: String = "capsule"
     
-    // current selected ARSCNObject
-    var selectedObject: ARSCNObject?
-    
+    // virtual gesture recognizer
+    lazy var virtualARSCNViewGestureRecognizer = VirtualARSCNViewGestureRecognizer(viewScene: viewScene)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +61,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         // sceneView.scene = scene
+        print(virtualARSCNViewGestureRecognizer)
         
         // Initialize buttons
         buttonInit()
@@ -70,7 +70,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         viewInit()
         
         // Initialize gesture recognizer
-        registerGestureRecognizers()
+//        registerGestureRecognizers()
         
         // Initialize light
         viewScene.autoenablesDefaultLighting = true

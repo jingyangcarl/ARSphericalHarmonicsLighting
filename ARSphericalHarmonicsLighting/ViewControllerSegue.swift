@@ -34,7 +34,6 @@ extension ViewController {
         if tableViewController.isShowBoundingBoxes == true {
             viewScene.debugOptions.insert(SCNDebugOptions.showBoundingBoxes)
         } else {
-            
             viewScene.debugOptions.remove(SCNDebugOptions.showBoundingBoxes)
         }
         
