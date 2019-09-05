@@ -30,9 +30,16 @@ class VirtualARSCNView: ARSCNView {
     }
     
     /*
-     
+     Description:
+     This function is used to perform a hittest aganst horizontal planes, where the horizontal planes may be infinite or not. If the plane if infinite, the hitTest will test all planes and return the nearet one which is within 5 cm of the object's position.
+     Input:
+     @ CGPoint at Point: a given CGPoint on screen
+     @ isInfinitePlane: whether the plane should be infinite or not
+     @ SCNVector3? at objectPosition: a given object position
+     Output:
+     @ ARHitTestResult? returnValue: a hit test result
     */
-    func planeHitTest(at point: CGPoint, infinitePlane: Bool = false, objectPosition: float3? = nil) -> ARHitTestResult? {
+    func planeHitTest(at point: CGPoint, isInfinitePlane: Bool = false, at objectPosition: float3? = nil) -> ARHitTestResult? {
         
         // perform hit test at given point
         let results = hitTest(point, types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
@@ -45,7 +52,7 @@ class VirtualARSCNView: ARSCNView {
         // check results on existing plane assuming the plane is a infinite plane
         // loop through all hit restuls againt infinite planes
         // and return the nearest one which is within 5 cm of the object's position
-        if infinitePlane == true {
+        if isInfinitePlane == true {
             let infinitePlaneResults = hitTest(point, types: .existingPlane)
             
             for infinitePlaneResult in infinitePlaneResults {
@@ -63,8 +70,8 @@ class VirtualARSCNView: ARSCNView {
             }
         }
         
+        // check results on esitmated plane
         return results.first(where: {$0.type == .estimatedHorizontalPlane})
-        
     }
     
     func updateARSCNObjectAnchor(for object: ARSCNObject) {

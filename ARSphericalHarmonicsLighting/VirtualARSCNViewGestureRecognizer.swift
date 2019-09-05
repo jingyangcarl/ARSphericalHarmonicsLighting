@@ -62,4 +62,15 @@ class VirtualARSCNViewGestureRecognizer: NSObject, UIGestureRecognizerDelegate {
             
         }
     }
+    
+    func translate(object: ARSCNObject, screenPos: CGPoint, isInfinitePlane: Bool, allowAnimation: Bool) {
+        guard let cameraTransform = viewScene.session.currentFrame?.camera.transform else { return }
+        guard let hitTestResult = viewScene.planeHitTest(at: screenPos, isInfinitePlane: true, at: object.simdWorldPosition) else { return }
+        
+        let transform = hitTestResult.worldTransform
+        let isOnPlane = hitTestResult.anchor is ARPlaneAnchor
+        object.setTransform()
+    }
+    
+    
 }
