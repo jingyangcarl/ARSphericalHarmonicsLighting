@@ -56,6 +56,9 @@ class VirtualARSCNViewGestureRecognizer: NSObject, UIGestureRecognizerDelegate {
         print("didTap")
         let touchLocation = sender.location(in: viewScene)
         
+        
+        // put object
+        
         if let touchedObject = viewScene.getARSCNObject(at: touchLocation) {
             selectedObject = touchedObject
         } else {
@@ -68,8 +71,8 @@ class VirtualARSCNViewGestureRecognizer: NSObject, UIGestureRecognizerDelegate {
         guard let hitTestResult = viewScene.planeHitTest(at: screenPos, isInfinitePlane: true, at: object.simdWorldPosition) else { return }
         
         let transform = hitTestResult.worldTransform
-        let isOnPlane = hitTestResult.anchor is ARPlaneAnchor
-        object.setTransform()
+//        let isOnPlane = hitTestResult.anchor is ARPlaneAnchor
+        object.setTransform(transform, relativeTo: cameraTransform)
     }
     
     

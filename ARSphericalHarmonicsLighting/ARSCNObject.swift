@@ -34,8 +34,9 @@ class ARSCNObject: SCNReferenceNode {
     }
     
     /*
+     
     */
-    func setTransform(_ newTransform: float4x4, relativeTo cameraTransform: float4x4, allowAnimation: Bool) {
+    func setTransform(_ newTransform: float4x4, relativeTo cameraTransform: float4x4) {
         let cameraWorldPosition = cameraTransform.columns.3
         var positionOffsetFromCamera = newTransform.columns.3 - cameraWorldPosition
         
@@ -46,8 +47,6 @@ class ARSCNObject: SCNReferenceNode {
         }
         
         simdPosition = simd_make_float3(cameraWorldPosition + positionOffsetFromCamera)
-        
-        updateAlignment(to: alignment, transform: newTransform, allowAnimation: allowAnimation)
     }
     
     

@@ -22,7 +22,7 @@
 import ARKit
 import UIKit
 
-extension ViewController {
+extension ViewController: UIGestureRecognizerDelegate {
     
     /*
      Description:
@@ -33,6 +33,8 @@ extension ViewController {
      @ nil returnValue: nil
     */
     func registerGestureRecognizers() {
+        
+        // remember to set ARSCNView in the Main.storyboard as VirtualARSCNView, or the gesture recognier cannot be triggered
         
         // register long press gesture recognizer
         let longPressGestureRecognizer = UILongPressGestureRecognizer()
@@ -94,15 +96,23 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @objc func pinchGestureAction(sender: UIPinchGestureRecognizer) {
-        guard let viewScene = sender.view as? ARSCNView else { return }
+        guard let viewScene = sender.view as? VirtualARSCNView else { return }
         let pinchLocation = sender.location(in: viewScene)
         
-        let objectHitTest = viewScene.hitTest(pinchLocation)
-        if !objectHitTest.isEmpty {
-            let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
-            objectHitTest.first?.node.runAction(pinchAction)
-            sender.scale = 1.0
+        if sender.state == .began {
+            
+        } else if sender.state == .changed {
+            
+            let objectHitTest = viewScene.hitTest(pinchLocation)
+            if !objectHitTest.isEmpty {
+                let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
+                objectHitTest.first?.node.runAction(pinchAction)
+                sender.scale = 1.0
+            }
+        } else if sender.state == .ended {
+            
         }
+        
     }
     
     /*
@@ -114,7 +124,25 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @objc func rotationGestureAction(sender: UIRotationGestureRecognizer) {
-        print("rotation")
+        
+        guard let viewScene = sender.view as? VirtualARSCNView else { return }
+        
+        let rotationLocation = sender.location(in: viewScene)
+        
+        if sender.state == .began {
+            let objectHitTest = viewScene.hitTest(rotationLocation)
+            if !objectHitTest.isEmpty {
+                selectedMeshNode = objectHitTest.first!.node
+            } else {
+                return
+            }
+        } else if sender.state == .changed {
+            let rotationAction = SCNAction.rotateBy(x: 0, y: sender.rotation, z: 0, duration: 0)
+            selectedMeshNode.runAction(rotationAction)
+            sender.rotation = 0.0
+        } else if sender.state == .ended {
+            
+        }
     }
     
     /*
@@ -126,20 +154,22 @@ extension ViewController {
      @ nil returnValue: nil
     */
     @objc func tapGestureAction(sender: UITapGestureRecognizer) {
-        print("tap")
-    guard let viewScene = sender.view as? ARSCNView else { return }
+        guard let viewScene = sender.view as? VirtualARSCNView else { return }
         let touchLocation = sender.location(in: viewScene)
         
         let planeHitTest = viewScene.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
         if !planeHitTest.isEmpty {
-            print(selectedMesh)
-            let scene = SCNScene(named: "art.scnassets/\(selectedMesh).scn")
-            let node = (scene?.rootNode.childNode(withName: selectedMesh, recursively: false))!
+            let scene = SCNScene(named: "art.scnassets/\(selectedMeshName).scn")
+            let node = (scene?.rootNode.childNode(withName: selectedMeshName, recursively: false))!
             let position = planeHitTest.first?.worldTransform.columns.3
             node.position = SCNVector3(position!.x, position!.y, position!.z)
             self.viewScene.scene.rootNode.addChildNode(node)
         }
+        
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
     
 }

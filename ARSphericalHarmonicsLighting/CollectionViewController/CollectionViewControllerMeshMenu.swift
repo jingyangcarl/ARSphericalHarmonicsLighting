@@ -38,7 +38,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
     ]
     
     // current mesh
-    var selectedMesh: String!
+    var selectedMeshName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +132,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         cell.isSelected = true
         
         // update selected item
-        selectedMesh = cell.name
+        selectedMeshName = cell.name
         
         // perform segue
         performSegue(withIdentifier: "collectionViewControllerUnwindToViewController", sender: self)

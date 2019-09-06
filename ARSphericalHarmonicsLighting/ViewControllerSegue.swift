@@ -81,6 +81,6 @@ extension ViewController {
         // set selected mesh
         guard let collectionViewController = sender.source as? CollectionViewControllerMeshMenu else { return }
         
-        self.selectedMesh = collectionViewController.selectedMesh
+        self.selectedMeshName = collectionViewController.selectedMeshName
     }
 }
