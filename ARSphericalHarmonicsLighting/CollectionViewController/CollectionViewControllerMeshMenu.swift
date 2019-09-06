@@ -34,6 +34,7 @@ class CollectionViewControllerMeshMenu: UICollectionViewController {
         meshCell(name: "sphere", image: #imageLiteral(resourceName: "MeshSphere.png")),
         meshCell(name: "torus", image: #imageLiteral(resourceName: "MeshTorus.png")),
         meshCell(name: "tube", image: #imageLiteral(resourceName: "MeshTube.png")),
+        meshCell(name: "cup", image: #imageLiteral(resourceName: "MeshCup.png")),
         meshCell(name: "ship", image: #imageLiteral(resourceName: "MeshShip.png")),
     ]
     

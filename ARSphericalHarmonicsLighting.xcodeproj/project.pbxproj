@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC9539BA2319CF44005A062C /* ARSCNObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9539B92319CF44005A062C /* ARSCNObject.swift */; };
 		EC9539BC2319CF62005A062C /* VirtualARSCNView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9539BB2319CF62005A062C /* VirtualARSCNView.swift */; };
-		EC9539BE23203777005A062C /* VirtualARSCNViewGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9539BD23203777005A062C /* VirtualARSCNViewGestureRecognizer.swift */; };
 		EC9567AC230C9C210067EAA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9567AB230C9C210067EAA5 /* AppDelegate.swift */; };
 		EC9567AE230C9C210067EAA5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9567AD230C9C210067EAA5 /* art.scnassets */; };
 		EC9567B0230C9C210067EAA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9567AF230C9C210067EAA5 /* ViewController.swift */; };
@@ -26,9 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC9539B92319CF44005A062C /* ARSCNObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSCNObject.swift; sourceTree = "<group>"; };
 		EC9539BB2319CF62005A062C /* VirtualARSCNView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualARSCNView.swift; sourceTree = "<group>"; };
-		EC9539BD23203777005A062C /* VirtualARSCNViewGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualARSCNViewGestureRecognizer.swift; sourceTree = "<group>"; };
 		EC9567A8230C9C210067EAA5 /* ARSphericalHarmonicsLighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARSphericalHarmonicsLighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC9567AB230C9C210067EAA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC9567AD230C9C210067EAA5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -122,9 +118,7 @@
 				EC9539BF2320603B005A062C /* ViewController */,
 				EC9539C023206073005A062C /* CollectionViewController */,
 				EC9539C123206082005A062C /* TableViewController */,
-				EC9539B92319CF44005A062C /* ARSCNObject.swift */,
 				EC9539BB2319CF62005A062C /* VirtualARSCNView.swift */,
-				EC9539BD23203777005A062C /* VirtualARSCNViewGestureRecognizer.swift */,
 			);
 			path = ARSphericalHarmonicsLighting;
 			sourceTree = "<group>";
@@ -203,12 +197,10 @@
 			files = (
 				ECBA5930230DFEEE0032143D /* TableViewControllerDebugMenu.swift in Sources */,
 				ECBA5938230F20A70032143D /* ViewControllerRenderer.swift in Sources */,
-				EC9539BE23203777005A062C /* VirtualARSCNViewGestureRecognizer.swift in Sources */,
 				EC9567B0230C9C210067EAA5 /* ViewController.swift in Sources */,
 				ECBA593C23109F650032143D /* ViewControllerSegue.swift in Sources */,
 				ECBA5932230DFF1D0032143D /* CollectionViewCellMeshMenu.swift in Sources */,
 				EC9567AC230C9C210067EAA5 /* AppDelegate.swift in Sources */,
-				EC9539BA2319CF44005A062C /* ARSCNObject.swift in Sources */,
 				EC9539BC2319CF62005A062C /* VirtualARSCNView.swift in Sources */,
 				ECBA5934230E06F20032143D /* ViewControllerButtons.swift in Sources */,
 				ECBA593A230F38E40032143D /* ViewControllerGestureRecognizer.swift in Sources */,

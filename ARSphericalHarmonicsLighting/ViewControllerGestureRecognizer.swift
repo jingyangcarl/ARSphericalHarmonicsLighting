@@ -38,29 +38,33 @@ extension ViewController: UIGestureRecognizerDelegate {
         
         // register long press gesture recognizer
         let longPressGestureRecognizer = UILongPressGestureRecognizer()
-        longPressGestureRecognizer.addTarget(self, action: #selector(longPressGestureAction))
+        longPressGestureRecognizer.addTarget(self, action: #selector(didLongPress))
+        longPressGestureRecognizer.delegate = self
         self.viewScene.addGestureRecognizer(longPressGestureRecognizer)
         
         // register pan press gesture recognizer
         let panPressGestureRecognizer = UIPanGestureRecognizer()
-        panPressGestureRecognizer.addTarget(self, action: #selector(panPressGestureAction))
+        panPressGestureRecognizer.delegate = self
+        panPressGestureRecognizer.addTarget(self, action: #selector(didPanPress))
         self.viewScene.addGestureRecognizer(panPressGestureRecognizer)
         
         // register pinch gesture recognizer
         let pinchGestureRecognizer = UIPinchGestureRecognizer()
-        pinchGestureRecognizer.addTarget(self, action: #selector(pinchGestureAction))
+        pinchGestureRecognizer.delegate = self
+        pinchGestureRecognizer.addTarget(self, action: #selector(didPinch))
         self.viewScene.addGestureRecognizer(pinchGestureRecognizer)
         
         // register rotation gesture recognizer
         let rotationGestureRecognizer = UIRotationGestureRecognizer()
-        rotationGestureRecognizer.addTarget(self, action: #selector(rotationGestureAction))
+        rotationGestureRecognizer.delegate = self
+        rotationGestureRecognizer.addTarget(self, action: #selector(didRotation))
         self.viewScene.addGestureRecognizer(rotationGestureRecognizer)
         
         // register tap gesture recognizer
         let tapGestureRecognizer = UITapGestureRecognizer()
-        tapGestureRecognizer.addTarget(self, action: #selector(tapGestureAction))
+        tapGestureRecognizer.delegate = self
+        tapGestureRecognizer.addTarget(self, action: #selector(didTap))
         self.viewScene.addGestureRecognizer(tapGestureRecognizer)
-        
     }
     
     /*
@@ -71,8 +75,21 @@ extension ViewController: UIGestureRecognizerDelegate {
      Output:
      @ nil returnValue: nil
     */
-    @objc func longPressGestureAction(sender: UILongPressGestureRecognizer) {
-        print("long press")
+    @objc func didLongPress(sender: UILongPressGestureRecognizer) {
+        
+        guard let viewScene = sender.view as? VirtualARSCNView else { return }
+        let longPressLocation = sender.location(in: viewScene)
+        
+        if sender.state == .began {
+            print("long press began")
+            
+        } else if sender.state == .changed {
+            print("long press changed")
+            
+        } else if sender.state == .ended {
+            print("long press ended")
+        }
+        
     }
     
     /*
@@ -83,8 +100,23 @@ extension ViewController: UIGestureRecognizerDelegate {
      Output:
      @ nil returnValue: nil
     */
-    @objc func panPressGestureAction(sender: UIPanGestureRecognizer) {
-        print("pan press")
+    @objc func didPanPress(sender: UIPanGestureRecognizer) {
+        
+        guard let viewScene = sender.view as? VirtualARSCNView else { return }
+        let panPressLocation = sender.location(in: viewScene)
+        
+        if sender.state == .began {
+            // locate the object using a hit test
+            selectedMeshNode = viewScene.getSCNNode(at: panPressLocation)!
+        } else if sender.state == .changed {
+            if let position = viewScene.getPlaneCoordination(at: panPressLocation) {
+                selectedMeshNode.worldPosition = position
+            } else {
+                
+            }
+        } else if sender.state == .ended {
+            
+        }
     }
     
     /*
@@ -95,20 +127,19 @@ extension ViewController: UIGestureRecognizerDelegate {
      Output:
      @ nil returnValue: nil
     */
-    @objc func pinchGestureAction(sender: UIPinchGestureRecognizer) {
+    @objc func didPinch(sender: UIPinchGestureRecognizer) {
+        
         guard let viewScene = sender.view as? VirtualARSCNView else { return }
         let pinchLocation = sender.location(in: viewScene)
         
         if sender.state == .began {
-            
+            // locate the object using a hit test
+            selectedMeshNode = viewScene.getSCNNode(at: pinchLocation)!
         } else if sender.state == .changed {
-            
-            let objectHitTest = viewScene.hitTest(pinchLocation)
-            if !objectHitTest.isEmpty {
-                let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
-                objectHitTest.first?.node.runAction(pinchAction)
-                sender.scale = 1.0
-            }
+            // scale the node which is detected in began session
+            let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
+            selectedMeshNode.runAction(pinchAction)
+            sender.scale = 1.0
         } else if sender.state == .ended {
             
         }
@@ -123,21 +154,17 @@ extension ViewController: UIGestureRecognizerDelegate {
      Output:
      @ nil returnValue: nil
     */
-    @objc func rotationGestureAction(sender: UIRotationGestureRecognizer) {
+    @objc func didRotation(sender: UIRotationGestureRecognizer) {
         
         guard let viewScene = sender.view as? VirtualARSCNView else { return }
-        
         let rotationLocation = sender.location(in: viewScene)
         
         if sender.state == .began {
-            let objectHitTest = viewScene.hitTest(rotationLocation)
-            if !objectHitTest.isEmpty {
-                selectedMeshNode = objectHitTest.first!.node
-            } else {
-                return
-            }
+            // locate the object using a hit test
+            selectedMeshNode = viewScene.getSCNNode(at: rotationLocation)!
         } else if sender.state == .changed {
-            let rotationAction = SCNAction.rotateBy(x: 0, y: sender.rotation, z: 0, duration: 0)
+            // rotate the node which is detected in began session
+            let rotationAction = SCNAction.rotateBy(x: 0, y: -sender.rotation, z: 0, duration: 0)
             selectedMeshNode.runAction(rotationAction)
             sender.rotation = 0.0
         } else if sender.state == .ended {
@@ -153,17 +180,25 @@ extension ViewController: UIGestureRecognizerDelegate {
      Output:
      @ nil returnValue: nil
     */
-    @objc func tapGestureAction(sender: UITapGestureRecognizer) {
+    @objc func didTap(sender: UITapGestureRecognizer) {
         guard let viewScene = sender.view as? VirtualARSCNView else { return }
         let touchLocation = sender.location(in: viewScene)
         
-        let planeHitTest = viewScene.hitTest(touchLocation, types: [.existingPlaneUsingExtent])
-        if !planeHitTest.isEmpty {
-            let scene = SCNScene(named: "art.scnassets/\(selectedMeshName).scn")
-            let node = (scene?.rootNode.childNode(withName: selectedMeshName, recursively: false))!
-            let position = planeHitTest.first?.worldTransform.columns.3
-            node.position = SCNVector3(position!.x, position!.y, position!.z)
-            self.viewScene.scene.rootNode.addChildNode(node)
+        if sender.state == .began{
+        } else if sender.state == .changed {
+        } else if sender.state == .ended {
+            
+            if let position = viewScene.getPlaneCoordination(at: touchLocation) {
+                print("art.scnassets/\(selectedMeshName).scn")
+                let scene = SCNScene(named: "art.scnassets/\(selectedMeshName).scn")
+                print(scene)
+                
+                let node = (scene?.rootNode.childNode(withName: selectedMeshName, recursively: true))!
+                print(node.position)
+                node.position = position
+                self.viewScene.scene.rootNode.addChildNode(node)
+            }
+            
         }
         
     }

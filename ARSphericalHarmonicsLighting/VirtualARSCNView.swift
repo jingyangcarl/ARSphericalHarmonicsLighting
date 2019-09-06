@@ -13,73 +13,40 @@ class VirtualARSCNView: ARSCNView {
     
     /*
      Description:
-     This function is used to perform a hittest at given point and return an ARSCNObject if it exist
+     This function is used to perform a hit test at given point and return an SCNNode if it exist
      Input:
-     @ CGPoint at point: a given location to have hit test
+     @ CGPoint at point: a given location to perform hit test
      Output:
-     @ ARSCNObject? returnValue: an ARSCNObject
+     @ SCNNode? returnValue: an SCNNode
     */
-    func getARSCNObject(at point: CGPoint) -> ARSCNObject? {
-        print(point)
-        let hitTestOption: [SCNHitTestOption: Any] = [.boundingBoxOnly: true]
-        let hitTestResult = hitTest(point, options: hitTestOption)
-        
-        return hitTestResult.lazy.compactMap{ result in
-            return ARSCNObject.getExistingARSCNObjectContaningNode(node: result.node)
-        }.first
+    func getSCNNode(at point: CGPoint) -> SCNNode? {
+        let hitTestResult = hitTest(point)
+        if !hitTestResult.isEmpty {
+            // the hit test can only find the real mesh which may be the child node of a mesh
+            // remember to find the parent node for that mesh
+            return hitTestResult.first?.node.parent
+        } else {
+            return SCNNode()
+        }
     }
     
     /*
      Description:
-     This function is used to perform a hittest aganst horizontal planes, where the horizontal planes may be infinite or not. If the plane if infinite, the hitTest will test all planes and return the nearet one which is within 5 cm of the object's position.
+     This function is used to perform a hit test at given point and return the location on a horizontal plane if it exist
      Input:
-     @ CGPoint at Point: a given CGPoint on screen
-     @ isInfinitePlane: whether the plane should be infinite or not
-     @ SCNVector3? at objectPosition: a given object position
+     @ CGPoint at point: a given locaitno to perform a hit test
      Output:
-     @ ARHitTestResult? returnValue: a hit test result
+     @ SCNVector3? returnValue: a position coordinate on the plane
     */
-    func planeHitTest(at point: CGPoint, isInfinitePlane: Bool = false, at objectPosition: float3? = nil) -> ARHitTestResult? {
-        
-        // perform hit test at given point
-        let results = hitTest(point, types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
-        
-        // check results based on existingPlaneUsingGeometry
-        if let existingPlaneUsingGeometryResult = results.first(where: {$0.type == .existingPlaneUsingGeometry}), let planeAnchor = existingPlaneUsingGeometryResult.anchor as? ARPlaneAnchor, planeAnchor.alignment == .horizontal {
-            return existingPlaneUsingGeometryResult
+    func getPlaneCoordination(at point: CGPoint) -> SCNVector3? {
+        let planeHitTestResult = hitTest(point, types: [.existingPlaneUsingExtent])
+        if !planeHitTestResult.isEmpty {
+            let position = planeHitTestResult.first?.worldTransform.columns.3
+            return SCNVector3(position!.x, position!.y, position!.z)
+        } else {
+            return nil
         }
-        
-        // check results on existing plane assuming the plane is a infinite plane
-        // loop through all hit restuls againt infinite planes
-        // and return the nearest one which is within 5 cm of the object's position
-        if isInfinitePlane == true {
-            let infinitePlaneResults = hitTest(point, types: .existingPlane)
-            
-            for infinitePlaneResult in infinitePlaneResults {
-                if let planeAnchor = infinitePlaneResult.anchor as? ARPlaneAnchor, planeAnchor.alignment == .horizontal {
-                    if let objectY = objectPosition?.y {
-                        let distance = Float(0.05)
-                        let planeY = Float(infinitePlaneResult.worldTransform.columns.3.y)
-                        if objectY > planeY - distance && objectY < planeY + distance {
-                            return infinitePlaneResult
-                        }
-                    } else {
-                        return infinitePlaneResult
-                    }
-                }
-            }
-        }
-        
-        // check results on esitmated plane
-        return results.first(where: {$0.type == .estimatedHorizontalPlane})
     }
-    
-    func updateARSCNObjectAnchor(for object: ARSCNObject) {
-        
-        
-    }
-    
-    
 
     /*
     // Only override draw() if you perform custom drawing.
