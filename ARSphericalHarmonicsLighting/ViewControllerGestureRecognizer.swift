@@ -189,10 +189,7 @@ extension ViewController: UIGestureRecognizerDelegate {
         } else if sender.state == .ended {
             
             if let position = viewScene.getPlaneCoordination(at: touchLocation) {
-                print("art.scnassets/\(selectedMeshName).scn")
-                let scene = SCNScene(named: "art.scnassets/\(selectedMeshName).scn")
-                print(scene)
-                
+                let scene = SCNScene(named: "\(selectedMeshName).scn", inDirectory: "art.scnassets")
                 let node = (scene?.rootNode.childNode(withName: selectedMeshName, recursively: true))!
                 print(node.position)
                 node.position = position
