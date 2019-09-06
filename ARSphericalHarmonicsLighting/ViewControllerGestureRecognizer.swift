@@ -38,6 +38,7 @@ extension ViewController: UIGestureRecognizerDelegate {
         
         // register long press gesture recognizer
         let longPressGestureRecognizer = UILongPressGestureRecognizer()
+        longPressGestureRecognizer.minimumPressDuration = 1.5
         longPressGestureRecognizer.addTarget(self, action: #selector(didLongPress))
         longPressGestureRecognizer.delegate = self
         self.viewScene.addGestureRecognizer(longPressGestureRecognizer)
@@ -82,7 +83,8 @@ extension ViewController: UIGestureRecognizerDelegate {
         
         if sender.state == .began {
             print("long press began")
-            
+            selectedMeshNode = viewScene.getSCNNode(at: longPressLocation)!
+            selectedMeshNode.removeFromParentNode()
         } else if sender.state == .changed {
             print("long press changed")
             
@@ -195,7 +197,6 @@ extension ViewController: UIGestureRecognizerDelegate {
                 node.position = position
                 self.viewScene.scene.rootNode.addChildNode(node)
             }
-            
         }
         
     }
