@@ -16,15 +16,28 @@ class VirtualARSCNView: ARSCNView {
      This function is used to perform a hit test at given point and return an SCNNode if it exist
      Input:
      @ CGPoint at point: a given location to perform hit test
+     @ Bool isDetectedPlaneConsidered: if a detected plane is found in hit test result, return or not
      Output:
      @ SCNNode? returnValue: an SCNNode
     */
-    func getSCNNode(at point: CGPoint) -> SCNNode? {
+    func getSCNNode(at point: CGPoint, isDetectedPlaneConsidered: Bool = false) -> SCNNode? {
         let hitTestResult = hitTest(point)
         if !hitTestResult.isEmpty {
             // the hit test can only find the real mesh which may be the child node of a mesh
             // remember to find the parent node for that mesh
-            return hitTestResult.first?.node.parent
+            
+            if (isDetectedPlaneConsidered) {
+                return hitTestResult.first?.node.parent
+            } else {
+                
+                if (hitTestResult.first?.node.parent?.name == "planeNodeParent") {
+                    return SCNNode()
+                } else {
+                    return hitTestResult.first?.node.parent
+                }
+                
+            }
+
         } else {
             return SCNNode()
         }

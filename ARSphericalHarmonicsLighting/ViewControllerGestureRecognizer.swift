@@ -83,9 +83,6 @@ extension ViewController: UIGestureRecognizerDelegate {
         
         if sender.state == .began {
             selectedMeshNode = viewScene.getSCNNode(at: longPressLocation)!
-            if selectedMeshNode.name == "planeNodeParent" {
-                selectedMeshNode = SCNNode()
-            }
             selectedMeshNode.removeFromParentNode()
         } else if sender.state == .changed {
             
@@ -111,9 +108,6 @@ extension ViewController: UIGestureRecognizerDelegate {
         if sender.state == .began {
             // locate the object using a hit test
             selectedMeshNode = viewScene.getSCNNode(at: panPressLocation)!
-            if selectedMeshNode.name == "planeNodeParent"{
-                selectedMeshNode = SCNNode()
-            }
         } else if sender.state == .changed {
             if let position = viewScene.getPlaneCoordination(at: panPressLocation) {
                 selectedMeshNode.worldPosition = position
@@ -141,9 +135,6 @@ extension ViewController: UIGestureRecognizerDelegate {
         if sender.state == .began {
             // locate the object using a hit test
             selectedMeshNode = viewScene.getSCNNode(at: pinchLocation)!
-            if selectedMeshNode.name == "planeNodeParent"{
-                selectedMeshNode = SCNNode()
-            }
         } else if sender.state == .changed {
             // scale the node which is detected in began session
             let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
@@ -171,9 +162,6 @@ extension ViewController: UIGestureRecognizerDelegate {
         if sender.state == .began {
             // locate the object using a hit test
             selectedMeshNode = viewScene.getSCNNode(at: rotationLocation)!
-            if selectedMeshNode.name == "planeNodeParent"{
-                selectedMeshNode = SCNNode()
-            }
         } else if sender.state == .changed {
             // rotate the node which is detected in began session
             let rotationAction = SCNAction.rotateBy(x: 0, y: -sender.rotation, z: 0, duration: 0)
