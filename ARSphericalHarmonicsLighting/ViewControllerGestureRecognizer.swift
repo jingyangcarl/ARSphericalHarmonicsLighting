@@ -82,14 +82,15 @@ extension ViewController: UIGestureRecognizerDelegate {
         let longPressLocation = sender.location(in: viewScene)
         
         if sender.state == .began {
-            print("long press began")
             selectedMeshNode = viewScene.getSCNNode(at: longPressLocation)!
+            if selectedMeshNode.name == "planeNodeParent" {
+                selectedMeshNode = SCNNode()
+            }
             selectedMeshNode.removeFromParentNode()
         } else if sender.state == .changed {
-            print("long press changed")
             
         } else if sender.state == .ended {
-            print("long press ended")
+            
         }
         
     }
@@ -110,6 +111,9 @@ extension ViewController: UIGestureRecognizerDelegate {
         if sender.state == .began {
             // locate the object using a hit test
             selectedMeshNode = viewScene.getSCNNode(at: panPressLocation)!
+            if selectedMeshNode.name == "planeNodeParent"{
+                selectedMeshNode = SCNNode()
+            }
         } else if sender.state == .changed {
             if let position = viewScene.getPlaneCoordination(at: panPressLocation) {
                 selectedMeshNode.worldPosition = position
@@ -137,6 +141,9 @@ extension ViewController: UIGestureRecognizerDelegate {
         if sender.state == .began {
             // locate the object using a hit test
             selectedMeshNode = viewScene.getSCNNode(at: pinchLocation)!
+            if selectedMeshNode.name == "planeNodeParent"{
+                selectedMeshNode = SCNNode()
+            }
         } else if sender.state == .changed {
             // scale the node which is detected in began session
             let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
@@ -164,6 +171,9 @@ extension ViewController: UIGestureRecognizerDelegate {
         if sender.state == .began {
             // locate the object using a hit test
             selectedMeshNode = viewScene.getSCNNode(at: rotationLocation)!
+            if selectedMeshNode.name == "planeNodeParent"{
+                selectedMeshNode = SCNNode()
+            }
         } else if sender.state == .changed {
             // rotate the node which is detected in began session
             let rotationAction = SCNAction.rotateBy(x: 0, y: -sender.rotation, z: 0, duration: 0)
@@ -193,7 +203,6 @@ extension ViewController: UIGestureRecognizerDelegate {
             if let position = viewScene.getPlaneCoordination(at: touchLocation) {
                 let scene = SCNScene(named: "\(selectedMeshName).scn", inDirectory: "art.scnassets")
                 let node = (scene?.rootNode.childNode(withName: selectedMeshName, recursively: true))!
-                print(node.position)
                 node.position = position
                 self.viewScene.scene.rootNode.addChildNode(node)
             }
@@ -201,8 +210,41 @@ extension ViewController: UIGestureRecognizerDelegate {
         
     }
     
+    /*
+     Description:
+     This function is used to decide whether gesture recognizer can work with other gesture recognizer simultaneously
+     Input:
+     @ UIGestureRecognizer _ gestureRecognizer: a gesture recognizer
+     @ UIGestureRecognizer shouldRecognizeSimultaneouslyWith otherGestureRecognizer: another gesture recognizer
+     Output:
+     @ Bool returnValue: can the given two recognizer work together or not
+    */
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+        
+        switch gestureRecognizer {
+        case is UILongPressGestureRecognizer:
+            return false
+        case is UIPanGestureRecognizer:
+            if otherGestureRecognizer is UIRotationGestureRecognizer {
+                return true
+            } else {
+                return false
+            }
+        case is UIPinchGestureRecognizer:
+            return false
+        case is UIRotationGestureRecognizer:
+            if otherGestureRecognizer is UIPanGestureRecognizer {
+                return true
+            } else {
+                return false
+            }
+        case is UITapGestureRecognizer:
+            return false
+        default:
+            break
+        }
+        
+        return false
     }
     
 }
