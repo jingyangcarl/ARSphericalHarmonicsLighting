@@ -138,6 +138,7 @@ extension ViewController {
     */
     @IBAction func buttonReset(_ sender: Any) {
         // perform haptic feedback
+        
         feedbackNotification.notificationOccurred(.success)
         
         // remove all the nodes

@@ -71,10 +71,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Initialize gesture recognizer
         registerGestureRecognizers()
-//        print(virtualARSCNViewGestureRecognizer)
         
         // Initialize light
-        viewScene.autoenablesDefaultLighting = true
+//        viewScene.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +84,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Enable plane detection
         configuration.planeDetection = .horizontal
+        
+        // Enable environment texturing
+        configuration.environmentTexturing = .automatic
 
         // Run the view's session
         viewScene.session.run(configuration)
